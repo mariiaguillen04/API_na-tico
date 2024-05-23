@@ -9,6 +9,7 @@ import org.hibernate.annotations.CascadeType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class Salida {
 	//Atributos	
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	// cascade = jakarta.persistence.CascadeType.ALL --> para que cualquier modificación relaionada se ejecute en todo lo relacionado
