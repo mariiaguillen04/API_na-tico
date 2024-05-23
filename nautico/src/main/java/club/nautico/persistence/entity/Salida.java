@@ -6,6 +6,7 @@ package club.nautico.persistence.entity;
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
 import org.hibernate.annotations.CascadeType;
+import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Component
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,7 +39,7 @@ public class Salida {
 	
 	// Relación 1:n con tabla usuario
 	@OneToMany(mappedBy = "salida", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
-	private int idUser;
+	private Long idUser;
 	private String destino;
 	private DateTimeAtCompleted fechaEntrada;
 	private DateTimeAtCompleted fechaSalida;

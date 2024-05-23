@@ -2,6 +2,8 @@ package club.nautico.persistence.entity;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+@Component
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class Usuarios {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	
 	private String dni;
 	private String nombre;
 	private String apellido1;
