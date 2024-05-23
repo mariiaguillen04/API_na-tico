@@ -21,10 +21,11 @@ public class Salida {
 	
 	@Id
 	@GeneratedValue
-	private int idSalida;
+	private int id;
 	private int idBarco;
 	private int idUser;
 	private String destino;
-	private DateTimeAtCompleted fechaHora;
+	private DateTimeAtCompleted fechaEntrada;
+	private DateTimeAtCompleted fechaSalida;
 
 }
