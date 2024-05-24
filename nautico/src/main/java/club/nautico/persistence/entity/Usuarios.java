@@ -35,9 +35,11 @@ public class Usuarios {
 	private String email;
 	//Relacion 1:N con tabla barco (para identificar el dueño del barco según num_socio)
 	@OneToMany(mappedBy = "num_socio", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
+	@Pattern(regexep = "[a-Z]{3}[0-9]{3}")
 	private String num_socio;
 	//Relacion 1:N con tabla salida (para identificar el patrón necesario para sacar el barco)
 	@OneToMany(mappedBy = "num_patron", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
+	@Pattern(regexep = "[a-Z]{3}[0-9]{4}")
 	private String num_patron;
 	
 	
