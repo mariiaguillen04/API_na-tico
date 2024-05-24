@@ -38,4 +38,5 @@ public class Salida {
 	private Usuario usuario;
 	
 	
+	
 }
