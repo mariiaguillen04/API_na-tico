@@ -1,17 +1,15 @@
 package club.nautico.persistence.entity;
 
-import org.springframework.stereotype.Component;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-@Component
+
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 
 public class Barco {
@@ -25,6 +23,10 @@ public class Barco {
 		private String nombre;
 		private Long nAmarre;
 		private double cuota;
+		
+		@ManyToOne
+		private Usuario usuario;
+
 		
 		
 
