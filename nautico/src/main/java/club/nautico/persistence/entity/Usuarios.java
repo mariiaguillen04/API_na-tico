@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +22,8 @@ public class Usuarios {
 
 	//Atributos Tabla Usuario
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	
 	private String dni;
 	private String nombre;
@@ -32,7 +32,11 @@ public class Usuarios {
 	private String telefono;
 	private String direccion;
 	private String email;
+	//Relacion 1:N con tabla barco (para identificar el dueño del barco según num_socio)
+	@OneToMany(mappedBy = "num_socio", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
 	private String num_socio;
+	//Relacion 1:N con tabla salida (para identificar el patrón necesario para sacar el barco)
+	@OneToMany(mappedBy = "num_patron", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
 	private String num_patron;
 	
 	
