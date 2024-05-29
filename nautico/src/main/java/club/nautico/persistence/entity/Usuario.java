@@ -19,7 +19,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	// hola muy buenas
+	// hola muy buenas tardes
 	private String dni;
 	private String nombre;
 	private String apellido1;
