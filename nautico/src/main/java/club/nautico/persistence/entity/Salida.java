@@ -32,11 +32,11 @@ public class Salida {
 
 	
 	@ManyToOne
-	private List<Barco> barco;
+	private Barco barco;
 
 
 
 	@ManyToOne
-	private List<Usuario> usuario;
+	private Usuario usuario;
 
 }
