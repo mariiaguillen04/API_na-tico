@@ -1,5 +1,5 @@
 package club.nautico.service;
 
-public class Servicio {
+public class UsuarioService {
 
 }
