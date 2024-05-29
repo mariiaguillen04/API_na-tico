@@ -1,4 +1,4 @@
-
+package club.nautico.persistence.entity;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.util.List;
