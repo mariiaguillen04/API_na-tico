@@ -3,6 +3,8 @@ package club.nautico.persistence.entity;
 
 
 
+import java.util.List;
+
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
 import org.hibernate.annotations.CascadeType;
@@ -35,11 +37,14 @@ public class Salida {
 	// orphanRemoval = true --> cuando elimine algo, se elimine todo lo relacionado
 	// Relación 1:n con tabla barco
 	@OneToMany(mappedBy = "salida", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
+	private List<Barco> barco;
 	private int idBarco;
 	
 	// Relación 1:n con tabla usuario
 	@OneToMany(mappedBy = "salida", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
+	private List<Usuarios> usuario;
 	private Long idUser;
+	
 	private String destino;
 	private DateTimeAtCompleted fechaEntrada;
 	private DateTimeAtCompleted fechaSalida;
