@@ -1,5 +1,6 @@
 package club.nautico.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -26,16 +27,46 @@ public class SalidaService {
 		return modelMapper.map(salidaDto, Salida.class);
 	}
 	
+	
+	
 	public SalidaDto createSalida(SalidaDto salidaDto) {
 		Salida salida = convertToEntity(salidaDto);
-		Salida salidaSave = salidaRepositorio.save(salida);
-		return convertToDto(salidaSave);
+		Salida salidaC= salidaRepositorio.save(salida);
+		return convertToDto(salidaC);
 	}
 	
 	public SalidaDto updateSalida(SalidaDto salidaDto) {
+		
 		Optional<Salida> salida = salidaRepositorio.findById(salidaDto.getId());
-		salida = Optional.ofNullable(convertToEntity(salidaDto,salida.get()));
+		
+		salida = Optional.ofNullable(convertToEntity(salidaDto));
+		
+		Salida salidaU = salidaRepositorio.save(salida.get());
+		
+		return convertToDto(salidaU);
+		
+		/*if(salida.isPresent()) {
+			return convertToDto(salida.get());
+		}else {
+			//excepción que hay que crear
+	
+		}*/
+		
+		
 	}
+	
+	
+	public void deleteSalidaById(SalidaDto salidaDto, int id) {
+		Salida salida = convertToEntity(salidaDto);
+		
+		salidaRepositorio.deleteById(id);
+		
+	}
+	
+	
+	/*public List<Salida> findAllSalidas(){
+		return List<Salida> ;
+	}*/
 	
 
 }
