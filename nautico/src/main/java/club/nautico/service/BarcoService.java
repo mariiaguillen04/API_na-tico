@@ -1,5 +1,6 @@
 package club.nautico.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -46,6 +47,10 @@ public class BarcoService {
 		barcoRepositorio.deleteById(id);
 	}
 	
-	
+	public List<Barco> findAllBarcos(){
+		List<Barco> barcos = barcoRepositorio.findAll();
+       
+		return barcos;
+	}
 
 }
