@@ -11,7 +11,6 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
-@Data
 
 public class Barco {
 	
@@ -19,7 +18,7 @@ public class Barco {
 		//Atributos Tabla Barco
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Long idBarco;
+		private Integer idBarco;
 		private String matricula;
 		private String nombre;
 		private Long nAmarre;
