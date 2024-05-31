@@ -8,6 +8,6 @@ import club.nautico.persistence.entity.Usuario;
 
 @Repository
 
-public interface UsuarioRepository extends JpaRepository<Salida, Integer > {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long > {
 
 }
