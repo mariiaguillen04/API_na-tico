@@ -38,19 +38,19 @@ public class SalidaService {
 	public SalidaDto updateSalida(SalidaDto salidaDto) {
 		
 		Optional<Salida> salida = salidaRepositorio.findById(salidaDto.getId());
-		
-		salida = Optional.ofNullable(convertToEntity(salidaDto));
-		
-		Salida salidaU = salidaRepositorio.save(salida.get());
-		
-		return convertToDto(salidaU);
-		
-		/*if(salida.isPresent()) {
-			return convertToDto(salida.get());
+		Salida salidaU;
+	
+		if(salida.isPresent()) {
+			
+			salida = Optional.ofNullable(convertToEntity(salidaDto));
+			
+			salidaU = salidaRepositorio.save(salida.get());
+			return convertToDto(salidaU);
+			
 		}else {
 			//excepción que hay que crear
 	
-		}*/
+		}
 		
 		
 	}
