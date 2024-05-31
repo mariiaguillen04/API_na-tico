@@ -32,10 +32,10 @@ public class SalidaService {
 		return convertToDto(salidaSave);
 	}
 	
-	/*public SalidaDto updateSalida(SalidaDto salidaDto) {
+	public SalidaDto updateSalida(SalidaDto salidaDto) {
 		Optional<Salida> salida = salidaRepositorio.findById(salidaDto.getId());
 		salida = Optional.ofNullable(convertToEntity(salidaDto,salida.get()));
-	}*/
+	}
 	
 
 }
