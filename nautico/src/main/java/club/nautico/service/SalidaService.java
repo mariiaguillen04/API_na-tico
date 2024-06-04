@@ -32,10 +32,10 @@ public class SalidaService {
 	public SalidaDto createSalida(SalidaDto salidaDto) {
 		Salida salida = convertToEntity(salidaDto);
 		Salida salidaC= salidaRepositorio.save(salida);
-		return convertToDto(salidaC);
+		return salidaRepositorio.convertToDto(salidaC);
 	}
 	
-	public SalidaDto updateSalida(SalidaDto salidaDto) {
+	/*public SalidaDto updateSalida(SalidaDto salidaDto) {
 		
 		Optional<Salida> salida = salidaRepositorio.findById(salidaDto.getId());
 		Salida salidaU;
@@ -53,12 +53,10 @@ public class SalidaService {
 		}
 		
 		
-	}
+	}*/
 	
 	
 	public void deleteSalidaById(SalidaDto salidaDto, int id) {
-		Salida salida = convertToEntity(salidaDto);
-		
 		salidaRepositorio.deleteById(id);
 		
 	}
