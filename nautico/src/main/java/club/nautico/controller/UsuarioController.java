@@ -1,4 +1,4 @@
-package com.app.clubnautico.controllers;
+package club.nautico.controller;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -14,25 +14,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import club.nautico.dto.UsuarioDTO;
+import club.nautico.service.dto.UsuarioDto;
 import club.nautico.models.UserModel;
-import club.nautico.services.UserServices;
+import club.nautico.service.UsuarioService;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UsuarioController {
 
-	/*APUNTES:
-	 * Optional<UsuarioDTO>
-Descripción: Optional<UsuarioDTO> es un contenedor que puede contener un objeto UsuarioDTO o estar vacío.
-Propósito: Se usa para devolver resultados de métodos en los que un UsuarioDTO podría no estar presente. Esto evita el retorno de null y proporciona una manera más segura de manejar la ausencia de valor.
-	 * Optional<UserModel>
-Descripción: Optional<UserModel> es un contenedor que puede contener un objeto UserModel o estar vacío.
-Propósito: Se usa para encapsular el resultado de consultas a la base de datos donde un UserModel podría no existir. Esto proporciona una manera más clara y segura de manejar la ausencia de resultados en lugar de devolver null.
-	 * */
-	
+
     @Autowired
-    private UserServices userService; // Inyecta la instancia de UserServices que contiene la lógica de negocio relacionada con los usuarios
+    private UsuarioService userService; // Inyecta la instancia de UserServices que contiene la lógica de negocio relacionada con los usuarios
     
     @GetMapping
     public ArrayList<UserModel> getUsers() { // Obtiene una lista de todos los usuarios llamando al método correspondiente en la clase de servicio de usuarios
@@ -40,15 +32,15 @@ Propósito: Se usa para encapsular el resultado de consultas a la base de datos 
     }
 
     @PostMapping
-    public UsuarioDTO saveUser(@RequestBody UsuarioDTO userDTO) {
+    public UsuarioDto saveUser(@RequestBody UsuarioDto userDTO) {
         //Guardamos el usuario y devuelve el DTO del usuario guardado (ya se encarga la capa de servicio de hacerlo todo)
     	return userService.saveUser(userDTO);
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<UsuarioDTO> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UsuarioDto> getUserById(@PathVariable Long id) {
         // Recibe el ID del usuario como parámetro y lo pasa a la capa de servicios para obtener el usuario correspondiente
-        Optional<UsuarioDTO> userOptional = userService.getUserById(id);
+        Optional<UsuarioDto> userOptional = userService.getUserById(id);
         if (userOptional.isPresent()) {
             // Si se encuentra el usuario, devuelve un ResponseEntity con el DTO del usuario y el código de estado OK (200)
             return ResponseEntity.ok(userOptional.get());
@@ -59,8 +51,8 @@ Propósito: Se usa para encapsular el resultado de consultas a la base de datos 
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<UsuarioDTO> updateUserById(@RequestBody UsuarioDTO userDTO, @PathVariable Long id) {
-        Optional<UsuarioDTO> updateUserOptional = userService.UpdateUserById(userDTO, id);
+    public ResponseEntity<UsuarioDto> updateUserById(@RequestBody UsuarioDto userDTO, @PathVariable Long id) {
+        Optional<UsuarioDto> updateUserOptional = userService.UpdateUserById(userDTO, id);
         if(updateUserOptional.isPresent()) {
         	return ResponseEntity.ok(updateUserOptional.get());
         } else {

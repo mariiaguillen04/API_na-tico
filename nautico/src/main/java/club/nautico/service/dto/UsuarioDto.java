@@ -1,11 +1,6 @@
 package club.nautico.service.dto;
 
-import lombok.Data;
-
-@Data
-
 public class UsuarioDto {
-	
 	//Clase utilizada para transferir los datos entre la capa de presentación y la capa de negocio
 		//Menores preocupaciones
 		//Simplificación de operaciones
@@ -75,5 +70,4 @@ public class UsuarioDto {
 		}
 
 	   
-
-}
+	}
