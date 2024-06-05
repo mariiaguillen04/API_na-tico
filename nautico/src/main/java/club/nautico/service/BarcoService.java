@@ -35,10 +35,10 @@ public class BarcoService {
 	}
 	
 	public BarcoDto updateSalida (BarcoDto barcoDto) {
-		Optional<Barco> barco = barcoRepositorio.findById(barcoDto.getId());
-		barco = Optional.ofNullable (convertToEntity(barcoDto));
-		Barco barcoU = barcoRepositorio.save(barco.get());
-		return convertToDto (barcoU);
+		Barco barco = convertToEntity(barcoDto);
+		barco = barcoRepositorio.findById(((Object) barco).getIdBarco());
+		BarcoDto barcoU = barcoRepositorio.save(((Optional<BarcoDto>) barco).get());
+		return barcoU;
 		
 	}
 		
@@ -47,8 +47,8 @@ public class BarcoService {
 		barcoRepositorio.deleteById(id);
 	}
 	
-	public List<Barco> findAllBarcos(){
-		List<Barco> barcos = barcoRepositorio.findAll();
+	public List<BarcoDto> findAllBarcosDto(BarcoDto barcoDto){
+		List<BarcoDto> barcos = barcoRepositorio.findAll();
        
 		return barcos;
 	}

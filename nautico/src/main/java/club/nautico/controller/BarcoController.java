@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import club.nautico.exception.ResourceNotFoundException;
 import club.nautico.persistence.entity.Barco;
 import club.nautico.persistence.repository.BarcoRepository;
+import club.nautico.service.dto.BarcoDto;
 
 @RestController
 @RequestMapping("/api/v1/Barcos")
@@ -28,7 +29,7 @@ public class BarcoController {
 	
 	@GetMapping
 	//Listar todos los barcos
-	public List<Barco> getAllBarcos() {
+	public List<BarcoDto> getAllBarcos() {
 		return BarcoRepository.findAll();
 	}
 	
@@ -40,15 +41,15 @@ public class BarcoController {
 	
 	@GetMapping("{id}")
 	//Buscar Barco por id 
-	public ResponseEntity<Barco> getBarcoById(@PathVariable int id){
-		Barco Barco = BarcoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El barco con id: "+ id+" no existe."));
+	public ResponseEntity<BarcoDto> getBarcoById(@PathVariable int id){
+		BarcoDto Barco = BarcoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El barco con id: "+ id+" no existe."));
 	return ResponseEntity.ok(Barco);
 	}
 	
 	@PutMapping("{id}")
 	//Modificar barco 
-	public ResponseEntity<Barco> updateUsuario(int id, Barco BarcoDetails) {
-		Barco updateBarco = BarcoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El barco con id: "+ id+" no existe."));
+	public ResponseEntity<BarcoDto> updateUsuario(int id, Barco BarcoDetails) {
+		BarcoDto updateBarco = BarcoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El barco con id: "+ id+" no existe."));
 		updateBarco.setNombre(BarcoDetails.getNombre()); //BarcoDetails es nuestro "DTO"
 		updateBarco.setCuota(BarcoDetails.getCuota());
 		//Se podría ampliar el update
@@ -58,7 +59,7 @@ public class BarcoController {
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<HttpStatus> deleteBarco(@PathVariable int id) {
-		Barco Barco = BarcoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El barco con id: "+ id+" no existe."));
+		BarcoDto Barco = BarcoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El barco con id: "+ id+" no existe."));
 	BarcoRepository.delete(Barco);
 	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
